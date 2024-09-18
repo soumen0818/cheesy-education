@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* General reset for consistent look */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: #202124;
+            margin-bottom: 20px;
+        }
+
+        select,
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 20px;
+            border: 1px solid #dfe1e5;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        select {
+            appearance: none;
+            background-color: #f8f9fa;
+        }
+
+        p {
+            text-align: left;
+            font-size: 14px;
+            color: #5f6368;
+        }
+
+        p span {
+            color: red;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #1669c1;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="home.html" method="post" enctype="multipart/form-data">
+        <h3>Login Now</h3>
+        <select name="" id="role">
+            <option value="Student">Student</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Parent">Parent</option>
+        </select>
+        <p>Your email <span>*</span></p>
+        <input type="email" name="email" placeholder="Enter your email" required maxlength="50" class="box">
+        <p>Your password <span>*</span></p>
+        <input type="password" name="pass" placeholder="Enter your password" required maxlength="20" class="box">
+        <input type="submit" value="Login" name="submit" class="btn">
+    </form>
+</body>
+<script>
+    document.querySelector('form').addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent form submission
+
+        const role = document.querySelector('select').value;
+
+        if (role === 'Student') {
+            window.location.href = 'home.html';
+        } else {
+            // Redirect to 404 page or handle logic for other roles
+            window.location.href = '<h3>not yet implemented<h3/>'; // Example redirect to a 404 page
+        }
+    });
+</script>
+
+</html>
