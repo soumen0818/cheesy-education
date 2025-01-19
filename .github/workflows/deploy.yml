@@ -2,7 +2,7 @@ name: Deploy Website
 on:
   push:
     branches:
-      - main  # or master, depending on your default branch name
+      - main
   pull_request:
     branches:
       - main
@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.DEPLOY_TOKEN }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -23,10 +25,10 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'  # Upload the entire repository
+          path: '.'
 
       - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main'  # Only deploy on main branch
+        if: github.ref == 'refs/heads/main'
         uses: actions/deploy-pages@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DEPLOY_TOKEN }}
